@@ -1,5 +1,5 @@
   Given(/^an user navigates to Youse website$/) do
-    @home_page = HomePage.new
+    @home_page = Objetos.instanciar :Home
     @home_page.myaccount
     page.should have_content('Olá, somos a Youse')
   end
