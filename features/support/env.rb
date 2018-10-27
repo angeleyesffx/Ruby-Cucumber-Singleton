@@ -1,21 +1,3 @@
-#encoding: utf-8
-
- require 'capybara/cucumber'
- require 'capybara/rspec'
- require 'selenium-webdriver'
-
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
-end
-
-Capybara.javascript_driver = :chrome
-
-Capybara.configure do |config|
-  config.default_max_wait_time = 10 # seconds
-  config.default_driver        = :selenium
-end
-
-
 #coding: utf-8
  require 'capybara/cucumber'
  require 'capybara-screenshot/cucumber'
@@ -30,20 +12,35 @@ end
 
     Capybara.register_driver :selenium_proxy do |app|
         #In this case selenium is using a proxy configuration with Chrome browser
-        options = Selenium::WebDriver::Chrome::Options.new(args: ['start-maximized', 'spobrproxy.serasa.intranet:3128'])
+        options = Selenium::WebDriver::Chrome::Options.new(args: ['start-maximized', 'proxy.intranet:1111'])
         options.add_argument('--disable-geolocation')
         Capybara::Selenium::Driver.new(app, :browser => :chrome, options: options)
     end
+
     Capybara.ignore_hidden_elements = false
     Capybara.default_max_wait_time = 20
 
     ###-----------------------------DEPRECATED CODE---------------------------------------###
-    #                                                                                       #
+    #  #encoding: utf-8
+    #   require 'capybara/cucumber'
+    #   require 'capybara/rspec'
+    #   require 'selenium-webdriver'
+    #
+    #   Capybara.register_driver :selenium do |app|
+    #   Capybara::Selenium::Driver.new(app, browser: :chrome)
+    #   end
+    #
+    #   Capybara.javascript_driver = :chrome
+    #
+    #   Capybara.configure do |config|
+    #     config.default_max_wait_time = 10 # seconds
+    #     config.default_driver        = :selenium
+    #   end                                                                                 #
     # Capybara.register_driver :selenium_proxy do |app|                                     #
     #    profile = Selenium::WebDriver::Chrome::Profile.new                                 #
     #    profile["network.proxy.type"] = 1                                                  #
-    #    profile["network.proxy.http"] = "spobrproxy.serasa.intranet"                       #
-    #    profile["network.proxy.http_port"] = 3128                                          #
+    #    profile["network.proxy.http"] = "proxy.intranet"                                   #
+    #    profile["network.proxy.http_port"] = 1111                                          #
     #    Capybara::Selenium::Driver.new(app, :browser => :chrome, :profile => profile)      #
     # end                                                                                   #
     #                                                                                       #
