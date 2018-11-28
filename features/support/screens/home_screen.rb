@@ -1,8 +1,7 @@
-
-
 class Home
       include Singleton
       include HomeObject
+      include SupportObject
 
     def initialize
 

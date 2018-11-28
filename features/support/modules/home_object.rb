@@ -1,12 +1,6 @@
 module HomeObject
   include Capybara::DSL
 
-  URL = 'http://www.youse.com.br'
-
-  #def visit
-   # super(URL) #This goes to the Begin Page
-  #end
-
   def myaccount
       visit("#{BASE_URL}")
       click_link(@botao_minha_conta)
