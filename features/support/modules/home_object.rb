@@ -3,12 +3,12 @@ module HomeObject
 
   URL = 'http://www.youse.com.br'
 
-  def visit
-    super(URL) #This goes to the Begin Page
-  end
+  #def visit
+   # super(URL) #This goes to the Begin Page
+  #end
 
   def myaccount
-      visit
+      visit("#{BASE_URL}")
       click_link(@botao_minha_conta)
   end
 

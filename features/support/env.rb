@@ -14,7 +14,8 @@
         #In this case selenium is using a proxy configuration with Chrome browser
         options = Selenium::WebDriver::Chrome::Options.new(args: ['start-maximized', 'proxy.intranet:1111'])
         options.add_argument('--disable-geolocation')
-        Capybara::Selenium::Driver.new(app, :browser => :chrome, options: options)
+       #Capybara::Selenium::Driver.new(app, :browser => :chrome, options: options)
+        Capybara::Selenium::Driver.new(app, :browser => :firefox, options: options)
     end
 
     Capybara.ignore_hidden_elements = false
@@ -48,7 +49,7 @@
 
     #Start new driver with chosen browser
     driver = Capybara.default_driver = :selenium_proxy
-    path = "../automation-master/features/support/screenshots/bugs"
+    path = "../Ruby-Cucumber-Singleton/features/support/screenshots/bugs"
     # register the new driver to the screenshot callback
     # necessary because lack of it may cause chrome driver to crash
     # does nothing since we are already using AfterStep to handle screenshot
@@ -73,7 +74,7 @@
     end
 
     After do |scenario|
-        path_failed = "../automation-master/features/support/screenshots/bugs"
+        path_failed = "../Ruby-Cucumber-Singleton/features/support/screenshots/bugs"
         screenshot_file_failed = "BUG-#{@scenario_name}-#{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png"
         file_path_failed = File.expand_path(path_failed)+'/'+screenshot_file_failed
         page.save_screenshot(file_path_failed) if scenario.failed?
@@ -81,7 +82,7 @@
 
     AfterStep do |scenario, step|
         if scenario.passed?
-            path = "../automation-master/features/support/screenshots"
+            path = "../Ruby-Cucumber-Singleton/features/support/screenshots"
             screenshot_file = "PASSED-#{@scenario_name}-#{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png"
             file_path = File.expand_path(path)+'/'+screenshot_file
             page.save_screenshot(file_path)
