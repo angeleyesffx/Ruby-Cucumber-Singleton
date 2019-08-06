@@ -26,7 +26,7 @@ h) Install Bundler using the command gem install bundler.
 
 i) Go to the project folder and install the gems listed on Gemfile, with the command bundle install.
 
-j) Run one feature with =>  bundle exec cucumber features/feature_name.feature
+j) Run one feature with =>  bundle exec cucumber features/feature_name.feature TEST_ENV=environment
 
 l) Cucumber complains that you need ANSICON to get console colors because Windows doesn’t understand ANSI color escape sequences. 
    Download ANSICON from http://adoxa.3eeweb.com/ansicon/. Extract it whatever you like it. 
